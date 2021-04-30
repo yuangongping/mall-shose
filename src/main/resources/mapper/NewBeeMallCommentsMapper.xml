@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="ltd.newbee.mall.dao.NewBeeMallCommentsMapper">
+    <select id="getCommentsByGoodsId" parameterType="java.lang.String" resultType="ltd.newbee.mall.api.mall.vo.NewBeeMallCommentsVo">
+        select
+            tb_newbee_mall_goods_comments.id as id,
+            tb_newbee_mall_goods_comments.create_time as createTime,
+            tb_newbee_mall_goods_comments.update_time as updateTime,
+            tb_newbee_mall_goods_comments.goods_id as goodsId,
+            tb_newbee_mall_goods_comments.content as content,
+            tb_newbee_mall_goods_comments.user_id as userId,
+            tb_newbee_mall_goods_comments.parent_id as parentId,
+            tb_newbee_mall_user.nick_name as userNickName
+        from tb_newbee_mall_goods_comments, tb_newbee_mall_user
+        where goods_id = #{goodsId} and tb_newbee_mall_goods_comments.user_id = tb_newbee_mall_user.user_id
+    </select>
+</mapper>
