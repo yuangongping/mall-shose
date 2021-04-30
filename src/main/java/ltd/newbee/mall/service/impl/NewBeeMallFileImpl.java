@@ -23,7 +23,7 @@ public class NewBeeMallFileImpl implements NewBeeMallFileService {
         response.setContentType("image/png");
         try {
             OutputStream out = response.getOutputStream();
-            File file = new File("D:" + File.separator + "upload" + File.separator + imageName);
+            File file = new File("./upload" + File.separator + imageName);
             fis = new FileInputStream(file);
             byte[] b = new byte[fis.available()];
             fis.read(b);
